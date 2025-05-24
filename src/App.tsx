@@ -1,39 +1,10 @@
-import React, { useState } from 'react';
-import DashboardSelectionPage from './pages/DashboardSelectionPage';
-import TrickyTaxPortal from './pages/TrickyTaxPortal';
-import TaxAppMockup from './pages/TaxAppMockup';
-import './styles/App.css';
-
-type AppView = 'dashboard' | 'business' | 'personal';
+import React from 'react';
+import DashboardCard from './components/DashboardCard';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<AppView>('dashboard');
-
-  const handleBusinessDashboardAccess = () => {
-    setCurrentView('business');
-  };
-
-  const handlePersonalAppAccess = () => {
-    setCurrentView('personal');
-  };
-
-  const handleBackToDashboard = () => {
-    setCurrentView('dashboard');
-  };
-
-  switch (currentView) {
-    case 'business':
-      return <TrickyTaxPortal onBack={handleBackToDashboard} />;
-    case 'personal':
-      return <TaxAppMockup onBack={handleBackToDashboard} />;
-    default:
-      return (
-        <DashboardSelectionPage 
-          onBusinessDashboardAccess={handleBusinessDashboardAccess}
-          onPersonalAppAccess={handlePersonalAppAccess}
-        />
-      );
-  }
+  return (
+    <DashboardCard />
+  );
 };
 
 export default App;
