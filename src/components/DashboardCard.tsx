@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ShoppingCart, MapPin, TrendingUp, User, Search, Gift, Star, Navigation, DollarSign, Check, Settings, LogOut, ChevronRight, Home, Package, Heart, Bell, ChefHat, Clock, Flame, Calendar } from 'lucide-react';
 
 const DashboardCard = () => {
@@ -29,16 +29,6 @@ const DashboardCard = () => {
     { id: 8, name: 'Jaggery', section: 'Sweets', aisle: 'G1', x: 85, y: 55 },
     { id: 9, name: 'Incense Sticks', section: 'Puja Items', aisle: 'H1', x: 15, y: 65 },
     { id: 10, name: 'Coconut Oil', section: 'Oils', aisle: 'B2', x: 30, y: 45 }
-  ];
-
-  const storeSections = [
-    { name: 'Rice & Grains', aisles: ['A1', 'A2'], color: '#fef3c7' },
-    { name: 'Lentils & Pulses', aisles: ['B1', 'B2'], color: '#fce7f3' },
-    { name: 'Spices & Masalas', aisles: ['C1', 'C2'], color: '#e0e7ff' },
-    { name: 'Dairy & Frozen', aisles: ['D1', 'F1'], color: '#ccfbf1' },
-    { name: 'Fresh Produce', aisles: ['E1', 'E2'], color: '#d1fae5' },
-    { name: 'Sweets & Snacks', aisles: ['G1', 'G2'], color: '#fed7aa' },
-    { name: 'Puja & Festival', aisles: ['H1'], color: '#fae8ff' }
   ];
 
   const recipes = [
