@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
 const ImmiHubSIMService = () => {
@@ -526,7 +526,7 @@ const ImmiHubSIMService = () => {
         </button>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from {
             opacity: 0;
