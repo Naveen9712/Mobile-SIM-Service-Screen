@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
 const ImmiHubSIMService = () => {
-  const [selectedCarrier, setSelectedCarrier] = useState(null);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [selectedDelivery, setSelectedDelivery] = useState(null);
+  const [selectedCarrier, setSelectedCarrier] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedDelivery, setSelectedDelivery] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState('carrier');
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -153,17 +153,17 @@ const ImmiHubSIMService = () => {
     ]
   };
 
-  const handleCarrierSelect = (carrierId) => {
+  const handleCarrierSelect = (carrierId: string) => {
     setSelectedCarrier(carrierId);
     setCurrentStep('plan');
   };
 
-  const handlePlanSelect = (planId) => {
+  const handlePlanSelect = (planId: string) => {
     setSelectedPlan(planId);
     setCurrentStep('delivery');
   };
 
-  const handleDeliverySelect = (deliveryType) => {
+  const handleDeliverySelect = (deliveryType: string) => {
     setSelectedDelivery(deliveryType);
   };
 
@@ -190,7 +190,7 @@ const ImmiHubSIMService = () => {
     }
   };
 
-  const getCarrierDetails = (carrierId) => {
+  const getCarrierDetails = (carrierId: string) => {
     return carriers.find(c => c.id === carrierId);
   };
 
@@ -202,7 +202,7 @@ const ImmiHubSIMService = () => {
   };
 
   if (showSuccess) {
-    const carrier = getCarrierDetails(selectedCarrier);
+    const carrier = getCarrierDetails(selectedCarrier as string);
     return (
       <div className="max-w-[390px] mx-auto bg-white min-h-screen shadow-2xl">
         <div className="text-center p-10">
@@ -306,7 +306,7 @@ const ImmiHubSIMService = () => {
                 </div>
                 
                 <div className="flex flex-col gap-2 items-end">
-                  {carrier.features.map((feature, index) => (
+                  {carrier.features.map((feature: string, index: number) => (
                     <span key={index} className="bg-gray-100 px-3 py-1 rounded-full text-xs font-medium text-gray-700">
                       {feature}
                     </span>
@@ -324,7 +324,7 @@ const ImmiHubSIMService = () => {
             <h2 className="text-xl font-semibold mb-5">Choose Your Plan</h2>
             
             <div className="space-y-4">
-              {plans[selectedCarrier].map((plan) => (
+              {plans[selectedCarrier as keyof typeof plans].map((plan: any) => (
                 <div
                   key={plan.id}
                   onClick={() => handlePlanSelect(plan.id)}
@@ -348,7 +348,7 @@ const ImmiHubSIMService = () => {
                   </div>
                   
                   <ul className="space-y-2 mt-3">
-                    {plan.features.map((feature, index) => (
+                    {plan.features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-center text-sm text-gray-700">
                         <span className="text-green-500 font-bold mr-2">✓</span>
                         {feature}
@@ -358,9 +358,9 @@ const ImmiHubSIMService = () => {
                   
                   <div className="flex gap-2 mt-3">
                     <div className={`px-3 py-1 text-xs font-semibold text-white rounded ${
-                      getCarrierDetails(selectedCarrier).color
+                      getCarrierDetails(selectedCarrier as string)?.color
                     }`}>
-                      {getCarrierDetails(selectedCarrier).logo}
+                      {getCarrierDetails(selectedCarrier as string)?.logo}
                     </div>
                   </div>
                 </div>
